@@ -3,9 +3,7 @@ import Home from './routes/home/home.component';
 import Navigation from './routes/navigation/navigation.component';
 
 const Shop = () => {
-  return (
-    <h1>I am the Shop Page</h1>
-  );
+  return <h1>I am the Shop Page</h1>
 }
 
 const App = () => {
@@ -19,4 +17,4 @@ const App = () => {
   )
 };
 
-export default App
+export default App;
