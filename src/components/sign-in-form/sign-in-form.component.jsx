@@ -7,7 +7,6 @@ import { UserContext } from "../../contexts/user.context";
 
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
-
 import './sign-in-form.styles.scss'
 
 const defaultFormFields = {
@@ -27,17 +26,17 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    setCurrentUser(user);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(email, password);
-      setCurrentUser
+      const { user } = await signInAuthUserWithEmailAndPassword(email, password);
 
       resetFormFields();
+      setCurrentUser(user)
     } catch(error) {
       switch(error.code) {
         case 'auth/wrong-password':
